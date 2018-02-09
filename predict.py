@@ -8,10 +8,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # initializing lists to hold varying daily price values for bitcoin
-dataframeX = pd.read_csv('smallset.csv',usecols=[5,6,7,8])
-dataframeY = pd.read_csv('smallsetY.csv',usecols=[8])
-dataframeXEval = pd.read_csv('data/trainsetY.csv',usecols=[8])
-
+dataframeX = pd.read_csv('data/smallset.csv',usecols=[5,6,7,8])
+dataframeY = pd.read_csv('data/smallsetY.csv',usecols=[8])
+dataframeXEval = pd.read_csv('data/trainsetX.csv',usecols=[8])
+dataframeYEval = pd.read_csv('data/trainsetY.csv',usecols=[8])
 X = dataframeX.as_matrix()
 Y = dataframeY.as_matrix()
 
