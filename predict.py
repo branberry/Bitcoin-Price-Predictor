@@ -10,11 +10,12 @@ import matplotlib.pyplot as plt
 # initializing lists to hold varying daily price values for bitcoin
 dataframeX = pd.read_csv('data/smallset.csv',usecols=[5,6,7,8])
 dataframeY = pd.read_csv('data/smallsetY.csv',usecols=[8])
-dataframeXEval = pd.read_csv('data/trainsetX.csv',usecols=[8])
+dataframeXEval = pd.read_csv('data/trainsetX.csv',usecols=[5,6,7,8])
 dataframeYEval = pd.read_csv('data/trainsetY.csv',usecols=[8])
 X = dataframeX.as_matrix()
 Y = dataframeY.as_matrix()
-
+X_test = dataframeXEval.as_matrix()
+Y_test = dataframeYEval.as_matrix()
 # Charting data
 #sns.lmplot('index','close', data=dataframeX.reset_index(),fit_reg=False)
 #plt.show()
@@ -22,13 +23,14 @@ Y = dataframeY.as_matrix()
 # creating the training model
 model = Sequential()
 model.add(Dense(1,input_shape=(4,)))
-model.add(Activation('linear'))
+model.add(Activation('relu'))
 
 sgd = SGD(0.01)
 
-model.compile(loss='msle',optimizer=sgd,
+model.compile(loss='msle',optimizer='rmsprop',
              metrics=['msle'])
 
 model.fit(X,Y,nb_epoch=10)
 
+print(model.predict(X_test))
 #score = model.evaluate(x_test, y_test, batch_size=32)
