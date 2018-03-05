@@ -30,7 +30,7 @@ sgd = SGD(0.01)
 model.compile(loss='msle',optimizer='rmsprop',
              metrics=['msle'])
 
-model.fit(X,Y,nb_epoch=10)
+model.fit(X,Y,nb_epoch=6)
 
 print(model.predict(X_test))
 #score = model.evaluate(x_test, y_test, batch_size=32)
